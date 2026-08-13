@@ -20,10 +20,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable) // API olduğu için CSRF kapalı
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**").disable()) // CSRF H2 için kapatıldı
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin())) // Frame izni
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Login/Register serbest
-                        .anyRequest().authenticated()               // Diğerleri token ile
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
