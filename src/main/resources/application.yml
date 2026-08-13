@@ -1,0 +1,23 @@
+﻿server:
+  port: 8081
+
+spring:
+  application:
+    name: expense-tracker
+  datasource:
+    url: jdbc:h2:mem:expensedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  secret: YnJva2VucGFzc3dvcmRzZWNyZXRrZXkyNTYwYml0c2FjdHVhbGx5c2VjdXJlcmVhbGx5bG9uZw==
+  expiration: 86400000
