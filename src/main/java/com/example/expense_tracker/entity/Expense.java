@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Expense extends BaseEntity {
 
     @Column(nullable = false)
-    private BigDecimal amount; // Para birimleri için her zaman BigDecimal kullanılır (Senior detayı)
+    private BigDecimal amount;
 
     private String description;
 
