@@ -1,0 +1,27 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: budget-service
+  datasource:
+    url: jdbc:h2:mem:budgetdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true          # H2 konsolunu aktif eder
+      path: /h2-console      # Adresi belirler
+      settings:
+        web-allow-others: true # Dışarıdan erişime izin verir
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

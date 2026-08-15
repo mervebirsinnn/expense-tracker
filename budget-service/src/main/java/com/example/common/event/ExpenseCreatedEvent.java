@@ -1,0 +1,14 @@
+package com.example.common.event;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.math.BigDecimal;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ExpenseCreatedEvent {
+    private Long userId;
+    private BigDecimal amount;
+}
